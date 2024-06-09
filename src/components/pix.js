@@ -19,12 +19,12 @@ export default {
   template: `
     <div
       v-if="pixQrCode"
-      class="pixQRCode">
+      class="pixQRCode m-2">
       <img :src="pixQrCode" />
     </div>
     <div
       v-if="pixUrl"
-      class="pixUrl">
+      class="pixUrl m-2">
       <input
         v-model="pixUrl"
         @click="inputOnClick"
