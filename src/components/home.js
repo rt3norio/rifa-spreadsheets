@@ -21,6 +21,11 @@ export default {
     this.rifas = await this.$rifaList.retrieve()
     console.log(this.rifas)
   },
+  computed: {
+    rifasCarregadas () {
+      return this.rifas.length > 0
+    }
+  },
   template: `
     <div class="">
 
@@ -39,6 +44,13 @@ export default {
 
       <div class="" v-if="!rifaAtiva">
         <h1 class="text-center pt-4">Rifas Disponíveis</h1>
+        <div class="d-flex align-items-center justify-content-center" v-if="!rifasCarregadas" style="height: 500px">
+
+            <div class=""><span class="spinner-border spinner-border-sm" aria-hidden="true" style="width: 3rem; height: 3rem;"></span></div>
+
+
+        </div>
+
         <ul style="padding-left: 0">
           <li v-for="rifa in rifas" :key="rifa[0]" style="text-align: center">
             <img v-if="rifa[2]" :src="rifa[2]" @click="setRifaAtiva(rifa[1])" style="max-width: 100%"/>

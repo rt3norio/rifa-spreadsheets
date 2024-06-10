@@ -16,7 +16,7 @@ export default {
       pixURL: null,
       pixQrCode: null,
       registering: false,
-      modal: null,
+      modal: null
     }
   },
   methods: {
@@ -76,7 +76,7 @@ export default {
     }
   },
   mounted () {
-    this.modal = new Modal(document.getElementById('payModal'),{backdrop: 'static', keyboard: false})
+    this.modal = new Modal(document.getElementById('payModal'), { backdrop: 'static', keyboard: false })
     this.modal.show()
   },
   unmounted () {
@@ -89,7 +89,8 @@ export default {
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="payModalTitle">Pague com Pix e clique em finalizar</h5>
+            <h5 class="modal-title" id="payModalTitle" v-if="!payData">Informe seus dados</h5>
+            <h5 class="modal-title" id="payModalTitle"  v-if="payData" >Pague com Pix e clique em concluir</h5>
           </div>
           <div class="modal-body">
 
@@ -105,7 +106,6 @@ export default {
                 :phone-number="data.config.whatsapp"
                 :ticket-numbers="payData.ticketNumbers"
                 :message="data.config.whatsappMessage"/>
-              <div v-if="registering">Registrando pedido...</div>
             </div>
             <form
               id="payForm"
@@ -146,7 +146,11 @@ export default {
               v-if="payData"
               type="button" class="btn btn-primary"
               @click="finish()"
-              :disabled="registering">Finalizar
+              :disabled="registering">
+              <span v-if="registering" class="spinner-border spinner-border-sm mx-2" aria-hidden="true"></span>
+              <span v-if="registering" role="status">Registrando seu Pedido...</span>
+              <span v-if="!registering">Concluir</span>
+
             </button>
             <div class="" v-else>
               <button type="submit" form="payForm" class="btn btn-primary">Pagar R\${{ totalPriceVerbose }} por Pix</button>

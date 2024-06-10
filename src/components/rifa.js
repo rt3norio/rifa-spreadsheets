@@ -40,14 +40,14 @@ export default {
       v-if="payData"
       :data="payData"
       @finished="payFinished()" />
-    <div v-if="rifa === null" class="text-center">Carregando...</div>
+    <div v-if="rifa === null" class="text-center"><span class="spinner-border" aria-hidden="true" style="width: 3rem; height: 3rem;"></span></div>
     <div
       v-else
       class="mt-2">
 
       <h1>{{ rifa.config.title }}</h1>
       <p><strong>Valor do bilhete:</strong> R\${{ rifa.config.ticketPrice }}</p>
-      <p>{{ rifa.config.description }}</p>
+      <p><span v-html="rifa.config.description"></span></p>
       <p><strong>Selecione os bilhetes que você quer reservar abaixo:</strong></p>
       <div class="tickets mb-5">
         <ticket
