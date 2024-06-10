@@ -132,9 +132,11 @@ export default {
                   type="text"
                   required/>
               </div>
-              <div v-if="requiredParams.includes('email')">
-                <label>E-mail:</label>
+              <div v-if="requiredParams.includes('email')" class="form-group">
+                <label for="email">E-mail:</label>
                 <input
+                  class="form-control"
+                  id="email"
                   v-model="email"
                   type="email"
                   required/>
