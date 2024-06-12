@@ -35,7 +35,9 @@ export default {
           <img src="https://unicorn-cdn.b-cdn.net/6498a560-0bf6-4bb7-95ce-2b28858eac9e/logo-templotabuleiro-final-01.png?" style="max-width: 100%"/>
           </div>
           <div class="col-md-2 align-self-center text-center">
-            <button class="btn btn-outline-secondary btn-lg ">Ver resultados</button>
+            <a href="https://www.instagram.com/templodotabuleiro/">
+              <button class="btn btn-outline-secondary btn-lg ">Ver resultados</button>
+            </a>
           </div>
 
         </div>
